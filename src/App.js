@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 
+const initialLocation = {
+  longitude: null,
+  lattitude: null,
+  speed: 0
+}
 
 function App() {
 
@@ -9,17 +14,20 @@ function App() {
   const [index, setIndex] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: null, y: null})
   const [netStatus, setNetStatus] = useState(window.navigator.onLine)
+  const [location, setLocation] = useState(initialLocation)
 
   useEffect(() => {
     document.title = `You have clicked ${count} times`;
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline)
+    const watchId = navigator.geolocation.watchPosition(handleLocation)
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline)
+      window.removeEventListener('offline', handleOffline);
+      navigator.geolocation.clearWatch(watchId);
     }
   }, [count]); // remove count and make it empty box, and see the page title.
 
@@ -46,6 +54,15 @@ function App() {
     setNetStatus(window.navigator.onLine)
   }
 
+  const handleLocation = event => {
+    setLocation({
+      ...location,
+      longitude : event.coords.longitude,
+      latitude : event.coords.latitude,
+      speed : event.coords.speed
+    })
+  }
+
   return (
     <>
     <button onClick={incrementCounter}>
@@ -68,7 +85,13 @@ function App() {
 
     <h2>Network Status</h2>
     <p>Current network status is {netStatus ? "Online" : "Offline"}</p>
-    
+    <br />
+
+    <h2>Gelocation</h2>
+    {JSON.stringify(location)}
+    <p>Longitude: <strong>{location.longitude}</strong></p>
+    <p>Lattitude: <strong>{location.latitude}</strong></p>
+    <p>Speed: <strong>{location.speed ? location.speed : '0'}</strong></p>
     </>
 
   );
