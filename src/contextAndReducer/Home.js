@@ -1,5 +1,6 @@
 import React from "react";
 import Display from "./Display";
+import PlayReducer from "./PlayReducer";
 
 export const UserContext = React.createContext();
 
@@ -10,6 +11,7 @@ export default function Home() {
     <div>
       <UserContext.Provider value={Username}>
         <Display />
+        <PlayReducer />
       </UserContext.Provider>
     </div>
   );
