@@ -5,13 +5,21 @@ export default function Fetch() {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://hn.algolia.com/api/v1/search?query=reacthooks")
-      .then((response) => {
-        console.log(response.data.hits);
-        setResults(response.data.hits);
-      });
+    getResults();
+    // axios
+    //   .get("http://hn.algolia.com/api/v1/search?query=reacthooks")
+    //   .then((response) => {
+    //     console.log(response.data.hits);
+    //     setResults(response.data.hits);
+    //   });
   }, []);
+
+  const getResults = async () => {
+    const response = await axios.get(
+      "http://hn.algolia.com/api/v1/search?query=reacthooks"
+    );
+    setResults(response.data.hits);
+  };
 
   return (
     <>
