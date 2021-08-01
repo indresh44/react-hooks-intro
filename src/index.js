@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 // import App from './App';
 // import App from "./Login";
 // import App from "./Register";
-import App from "./dataFetching/Fetch";
+// import App from "./dataFetching/Fetch";
+import App from "./contextAndReducer/Home";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
