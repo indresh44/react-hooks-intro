@@ -4,7 +4,9 @@ import ReactDOM from "react-dom";
 // import App from "./Login";
 // import App from "./Register";
 // import App from "./dataFetching/Fetch";
-import App from "./contextAndReducer/Home";
+// import App from "./contextAndReducer/Home";
+import App from "./todo/TodoApp";
+
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
