@@ -61,7 +61,11 @@ export default function Fetch() {
   return (
     <>
       <CssBaseline />
-      <AppBar position="fixed" color="primary" style={{ alignItems: "center" }}>
+      <AppBar
+        position="relative"
+        color="primary"
+        style={{ alignItems: "center" }}
+      >
         <h2>Fetch Data</h2>
       </AppBar>
       <Container maxWidth="sm" style={{ marginTop: "5em" }}>

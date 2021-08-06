@@ -5,14 +5,18 @@ import ReactDOM from "react-dom";
 // import App from "./Register";
 // import App from "./dataFetching/Fetch";
 // import App from "./contextAndReducer/Home";
-import App from "./todo/TodoApp";
+// import App from "./todo/TodoApp";
+import App from "./router/App";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <Router>
     <App />
-  </React.StrictMode>,
+  </Router>,
+  // </React.StrictMode>
   document.getElementById("root")
 );
 
